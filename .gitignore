@@ -1,0 +1,16 @@
+/fastlanelog
+/fastlane/*.md
+/fastlane/report.xml
+/fastlane/screenshots
+/build
+/xcuserdata
+*.xcuserdatad
+/Pods
+*~
+.DS_Store
+*.xcuserstate
+*.xcworkspace
+xcuserdata
+Podfile.lock
+buglybin/
+*.jar
