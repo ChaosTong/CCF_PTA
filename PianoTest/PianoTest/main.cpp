@@ -5,41 +5,18 @@ int main() {
 #else
     freopen("f.in", "r", stdin);
 #endif
-    int lang = 0;
-    int pub = 0;
-    int num = 0;
-    char reg;
-    scanf("%d-%03d-%05d-%c", &lang, &pub, &num, &reg);
-    int pub_c = pub;
-    int num_c = num;
-    int result = 0;
-    result = lang * 1;
-    int i = 4;
-    while(pub>0){
-        int temp = pub%10;
-        result += temp * i;
-        i -= 1;
-        pub /= 10;
+    int n;
+    int mod = 1000000007;
+    long long s[6][1005] = {0};
+    scanf("%d", &n);
+    for (int len = 1; len <= n; ++len) {
+        s[0][len] = 1;
+        s[1][len] = (s[1][len-1]*2 + s[0][len-1])%mod;
+        s[2][len] = (s[2][len-1] + s[0][len-1])%mod;
+        s[3][len] = (s[3][len-1]*2 + s[1][len-1])%mod;
+        s[4][len] = (s[4][len-1]*2 + s[2][len-1] + s[1][len-1])%mod;
+        s[5][len] = (s[5][len-1]*2 + s[3][len-1] + s[4][len-1])%mod;
     }
-    i = 9;
-    while(num>0){
-        int temp = num%10;
-        result += temp * i;
-        i -= 1;
-        num /= 10;
-    }
-    result = result%11;
-    if (result == 10 && reg == 'X') {
-        printf("Right");
-    } else if (result == reg - '0') {
-        printf("Right");
-    } else {
-        if (result == 10) {
-            reg = 'X';
-        } else {
-            reg = '0'+result;
-        }
-        printf("%d-%03d-%05d-%c", lang, pub_c, num_c, reg);
-    }
+    printf("%lld", s[5][n]);
     return 0;
 }
