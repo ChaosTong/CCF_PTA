@@ -5,41 +5,38 @@ int main() {
 #else
     freopen("f.in", "r", stdin);
 #endif
-    int lang = 0;
-    int pub = 0;
-    int num = 0;
-    char reg;
-    scanf("%d-%03d-%05d-%c", &lang, &pub, &num, &reg);
-    int pub_c = pub;
-    int num_c = num;
-    int result = 0;
-    result = lang * 1;
-    int i = 4;
-    while(pub>0){
-        int temp = pub%10;
-        result += temp * i;
-        i -= 1;
-        pub /= 10;
+    int m, n;
+    int s[10][5] = {0};
+    scanf("%d %d", &n, &m);
+    for (int i = 0; i < n; i++) {
+        int x1, y1, x2, y2;
+        scanf("%d %d %d %d", &x1, &y1, &x2, &y2);
+        s[i][0] = x1;
+        s[i][1] = y1;
+        s[i][2] = x2;
+        s[i][3] = y2;
+        s[i][4] = i+1;
     }
-    i = 9;
-    while(num>0){
-        int temp = num%10;
-        result += temp * i;
-        i -= 1;
-        num /= 10;
-    }
-    result = result%11;
-    if (result == 10 && reg == 'X') {
-        printf("Right");
-    } else if (result == reg - '0') {
-        printf("Right");
-    } else {
-        if (result == 10) {
-            reg = 'X';
-        } else {
-            reg = '0'+result;
+    for (int i = 0; i < m; i++) {
+        int x, y;
+        scanf("%d %d", &x, &y);
+        int flag = 0;
+        for (int j = n-1; j >= 0; j--) {
+            if (x >= s[j][0] && x <= s[j][2] && y >= s[j][1] && y <= s[j][3]) {
+                flag = 1;
+                printf("%d\n", s[j][4]);
+                int temp[5] = {0};
+                for (int k = 0; k < 5; k++) {
+                    temp[k] = s[n-1][k];
+                    s[n-1][k] = s[j][k];
+                    s[j][k] = temp[k];
+                }
+                break;
+            }
         }
-        printf("%d-%03d-%05d-%c", lang, pub_c, num_c, reg);
+        if (flag == 0) {
+            printf("IGNORED\n");
+        }
     }
     return 0;
 }
