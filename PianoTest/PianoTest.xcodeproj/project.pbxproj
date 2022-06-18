@@ -39,6 +39,7 @@
 		9B661493285C555E00D662A4 /* 201403-2.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "201403-2.md"; sourceTree = "<group>"; };
 		9B661494285C555E00D662A4 /* 201403-1.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "201403-1.md"; sourceTree = "<group>"; };
 		9B661495285C555E00D662A4 /* 201403-4.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "201403-4.md"; sourceTree = "<group>"; };
+		9B66149B285DD90100D662A4 /* all.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = all.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +93,7 @@
 				9B37415328585A25004449C2 /* 201312-3.md */,
 				9B37415228585A25004449C2 /* 201312-4.md */,
 				9B37415028585A25004449C2 /* 201312-5.md */,
+				9B66149B285DD90100D662A4 /* all.md */,
 			);
 			name = Resources;
 			path = ../Resources;
