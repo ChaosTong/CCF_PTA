@@ -13,5 +13,5 @@ int main() {
         n /= 10;
     }
     printf("%d", count);
-    return 0;
+    return 0; 
 }
