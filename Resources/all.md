@@ -137,5 +137,191 @@ int main() {
 ```
 201604-1
 ```c
+#include <stdio.h>
 
+int main() {
+#ifdef ONLINE_JUDGE
+#else
+    freopen("f.in", "r", stdin);
+#endif
+    int n, count = 0;
+    int p[1005] = {0};
+    scanf("%d", &n);
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &p[i]);
+    }
+    for (int i = 0; i < n; i++) {
+        if (i > 0 && i != n-1) {
+            if ((p[i-1] - p[i]) * (p[i] - p[i+1]) < 0) {
+                count += 1;
+            }
+        }
+    }
+    printf("%d", count);
+    return 0; 
+}
+```
+
+201609-1
+```c
+#include <stdio.h>
+
+int main() {
+#ifdef ONLINE_JUDGE
+#else
+    freopen("f.in", "r", stdin);
+#endif
+    int n, count = 0;
+    int p[1005] = {0};
+    scanf("%d", &n);
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &p[i]);
+        if (i > 0) {
+            int gap = p[i] - p[i-1];
+            if (gap < 0) {
+                gap *= -1;
+            }
+            if (gap > count) {
+                count = gap;
+            }
+        }
+    }
+    printf("%d", count);
+    return 0; 
+}
+```
+201612-1
+```c
+```
+201703-1
+```c
+#include <stdio.h>
+
+int main() {
+#ifdef ONLINE_JUDGE
+#else
+    freopen("f.in", "r", stdin);
+#endif
+    int n, k;
+    int count = 0;
+    int left = 0;
+    int p[1005] = {0};
+    scanf("%d %d", &n, &k);
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &p[i]);
+        if (left + p[i] >= k) {
+            left = 0;
+            count += 1;
+        } else {
+            left += p[i];
+        }
+    }
+    if (left > 0) {
+        count += 1;
+    }
+    printf("%d", count);
+    return 0; 
+}
+```
+201709-1
+```c
+#include <stdio.h>
+
+int main() {
+#ifdef ONLINE_JUDGE
+#else
+    freopen("f.in", "r", stdin);
+#endif
+    int n;
+    int count = 0;
+    scanf("%d", &n);
+    while (n >= 10) {
+        if (n / 50 > 0) {
+            count += (n / 50) * 7;
+            n -= (n/50)*50;
+        } else if (n / 30 > 0) {
+            count += (n / 30) * 4;
+            n -= (n/30)*30;
+        } else if (n / 10 > 0) {
+            count += (n / 10) * 1;
+            n -= (n/10)*10;
+        }
+    }
+    printf("%d", count);
+    return 0; 
+}
+```
+201712-1
+```c
+```
+201712-1
+```c
+```
+201712-1
+```c
+```
+201712-1
+```c
+```
+201712-1
+```c
+```
+201712-1
+```c
+```
+201712-1
+```c
+```
+201712-1
+```c
+```
+201712-1
+```c
+```
+201712-1
+```c
+```
+201712-1
+```c
+```
+201712-1
+```c
+```
+201712-1
+```c
+```
+201712-1
+```c
+```
+201712-1
+```c
+```
+
+quickSort
+```c
+void quickSort(int *number, int first, int last) {
+    int i, j, pivot;
+    int temp;
+    if (first<last) {
+        pivot = first;
+        i = first;
+        j = last;
+        while (i<j) {
+            while (number[i] <= number[pivot] && i<last)
+                i++;
+            while (number[j]>number[pivot])
+                j--;
+            if (i<j) {
+                temp = number[i];
+                number[i] = number[j];
+                number[j] = temp;
+            }
+        }
+        temp = number[pivot];
+        number[pivot] = number[j];
+        number[j] = temp;
+        quickSort(number, first, j - 1);
+        quickSort(number, j + 1, last);
+    }
+}
 ```
