@@ -135,9 +135,10 @@ int main() {
     return 0;
 }
 ```
-201604-1
+201903-1
 ```c
 #include <stdio.h>
+<<<<<<< HEAD
 
 int main() {
 #ifdef ONLINE_JUDGE
@@ -165,12 +166,15 @@ int main() {
 201609-1
 ```c
 #include <stdio.h>
+=======
+>>>>>>> 0f70236ee6ace9cf95bc50426638a924de868400
 
 int main() {
 #ifdef ONLINE_JUDGE
 #else
     freopen("f.in", "r", stdin);
 #endif
+<<<<<<< HEAD
     int n, count = 0;
     int p[1005] = {0};
     scanf("%d", &n);
@@ -323,5 +327,24 @@ void quickSort(int *number, int first, int last) {
         quickSort(number, first, j - 1);
         quickSort(number, j + 1, last);
     }
+=======
+    int n;
+    int a[100005] = {0};
+    scanf("%d", &n);
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &a[i]);
+    }
+    printf("%d ", a[n-1]>a[0]?a[n-1]:a[0]);
+    if (n%2 == 0) {
+        if ((a[n/2-1] + a[n/2])%2!=0) {
+            printf("%.1f", (a[n/2-1] + a[n/2])/2.0);
+        } else {
+            printf("%d", (a[n/2-1] + a[n/2])/2);
+        }
+    } else {
+        printf("%d", a[n/2]);
+    }
+    printf(" %d\n", a[n-1]<a[0]?a[n-1]:a[0]);
+>>>>>>> 0f70236ee6ace9cf95bc50426638a924de868400
 }
 ```
