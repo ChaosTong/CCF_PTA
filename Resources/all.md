@@ -422,7 +422,7 @@ void quickSort(int *number, int first, int last) {
 ```
 
 202206-2
-```
+```c
 #include <stdio.h>
 //https://blog.csdn.net/nahnah_/article/details/125284225
 struct point {
@@ -486,4 +486,104 @@ int main() {
     printf("%d\n", count);
     return 0;
 }
+```
+
+```c++
+#include <iostream>
+using namespace std;
+cin >> n;
+cout << n << endl;
+coutn << n << " ";
+
+char str[100];
+cin.getline(str, 100);
+
+#include <string>
+string str;
+getline(cin, str);
+str.length();
+str.size();
+str[1];
+str.c_str();
+str = str1 + str2;
+
+str.insert(3, str2);
+str.erase(str.begin()+4);
+str.clear();
+str.substr(0, 5);
+str.find(str2)
+str.repplace(pos, len, str2)
+
+#include <algorithm>
+bool cmp(int a, int b) {
+  return a > b;
+}
+sort(a, a+6);
+sort(a, a+6, cmp);
+
+int max = max(x, y);
+int min = min(x, y);
+int abs = abs(x);
+swap(x, y);
+reverse(a, a+4);
+fill(a, a+5, 0);
+
+#include <vector>
+vector<int> vi;
+
+for (int i = 1; i < 5; i++) {
+  vi.push_back(i);
+}
+for (vector<int>::iterator it = vi.begin(); it != vi.end(); vi++) {
+  cout << *it << endl;
+}
+
+vi.pop_back();
+vi.size();
+vi.clear();
+vi.insert(vi.begin()+2, -1);
+vi[0];
+vi.erase(vi.begin()+3);
+
+#include <set>
+
+set<int> st;
+st.insert(100);
+set<int>::iterator it = st.find(2);
+st.erase(st.find(2));
+st.erase(100)
+st.size();
+st.clear();
+
+#include <quene>
+quene<int> q;
+q.push(x);
+q.front();
+q.back();
+q.pop();
+q.empty() == true;
+q.size();
+
+priority_qunen<int> q;
+q.push(x);
+q.top();
+q.pop();
+q.empty();
+q.size();
+
+#include <stack>
+stack<int> st;
+st.push(1);
+st.top();
+st.pop();
+st.empty();
+st.size();
+
+#include <map>
+
+pair<int, int> p;
+pair<int, int> p(2, 2);
+p = make_pair(2, 2);
+p.first = 2;
+p.second = 2;
 ```
