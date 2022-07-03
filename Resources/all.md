@@ -135,10 +135,9 @@ int main() {
     return 0;
 }
 ```
-201903-1
+201604-1
 ```c
 #include <stdio.h>
-<<<<<<< HEAD
 
 int main() {
 #ifdef ONLINE_JUDGE
@@ -166,15 +165,12 @@ int main() {
 201609-1
 ```c
 #include <stdio.h>
-=======
->>>>>>> 0f70236ee6ace9cf95bc50426638a924de868400
 
 int main() {
 #ifdef ONLINE_JUDGE
 #else
     freopen("f.in", "r", stdin);
 #endif
-<<<<<<< HEAD
     int n, count = 0;
     int p[1005] = {0};
     scanf("%d", &n);
@@ -301,6 +297,101 @@ int main() {
 ```c
 ```
 
+201612-1
+```c
+#include <stdio.h>
+
+int main() {
+#ifdef ONLINE_JUDGE
+#else
+    freopen("f.in", "r", stdin);
+#endif
+    int n;
+    scanf("%d", &n);
+    int a[1005] = {0};
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &a[i]);
+    }
+    for (int i = 0; i < n-1; i++) {
+        for (int j = 0; j < n-i-1; j++) {
+            if (a[j] > a[j+1]) {
+                int temp = a[j+1];
+                a[j+1] = a[j];
+                a[j] = temp;
+            }
+        }
+    }
+    if (n % 2 == 0) {
+        int i= n/2-1, j = n/2;
+        if (a[i] != a[j]) {
+            printf("-1");
+            return 0;
+        }
+        int left = i, right = j;
+        while (a[left] == a[i]) {
+            left -=1;
+        }
+        while (a[j] == a[right]) {
+            right += 1;
+        }
+        if (i-left == right-j) {
+            printf("%d", a[i]);
+            return 0;
+        } else {
+            printf("-1");
+            return 0;
+        }
+    } else {
+        int i = n/2;
+        int left = i-1, right = i+1;
+        while (a[left] == a[i]) {
+            left -=1;
+        }
+        while (a[i] == a[right]) {
+            right += 1;
+        }
+        if (i-left == right-i) {
+            printf("%d", a[i]);
+            return 0;
+        } else {
+            printf("-1");
+            return 0;
+        }
+    }
+    return 0;
+}
+
+```
+
+201903-1
+```c
+#include <stdio.h>
+
+int main() {
+#ifdef ONLINE_JUDGE
+#else
+    freopen("f.in", "r", stdin);
+#endif
+    int n;
+    int a[100005] = {0};
+    scanf("%d", &n);
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &a[i]);
+    }
+    printf("%d ", a[n-1]>a[0]?a[n-1]:a[0]);
+    if (n%2 == 0) {
+        if ((a[n/2-1] + a[n/2])%2!=0) {
+            printf("%.1f", (a[n/2-1] + a[n/2])/2.0);
+        } else {
+            printf("%d", (a[n/2-1] + a[n/2])/2);
+        }
+    } else {
+        printf("%d", a[n/2]);
+    }
+    printf(" %d\n", a[n-1]<a[0]?a[n-1]:a[0]);
+}
+```
+
 quickSort
 ```c
 void quickSort(int *number, int first, int last) {
@@ -327,24 +418,72 @@ void quickSort(int *number, int first, int last) {
         quickSort(number, first, j - 1);
         quickSort(number, j + 1, last);
     }
-=======
-    int n;
-    int a[100005] = {0};
-    scanf("%d", &n);
+}
+```
+
+202206-2
+```
+#include <stdio.h>
+//https://blog.csdn.net/nahnah_/article/details/125284225
+struct point {
+    int x, y;
+};
+
+int main() {
+#ifdef ONLINE_JUDGE
+#else
+    freopen("f.in", "r", stdin);
+#endif
+    int n,l,s;
+    scanf("%d %d %d", &n, &l, &s);
+    struct point trees[1005];
+    struct point map[55];
     for (int i = 0; i < n; i++) {
-        scanf("%d", &a[i]);
+        scanf("%d %d", &trees[i].x, &trees[i].y);
     }
-    printf("%d ", a[n-1]>a[0]?a[n-1]:a[0]);
-    if (n%2 == 0) {
-        if ((a[n/2-1] + a[n/2])%2!=0) {
-            printf("%.1f", (a[n/2-1] + a[n/2])/2.0);
-        } else {
-            printf("%d", (a[n/2-1] + a[n/2])/2);
+    int t = 0;
+    for (int i = s; i >= 0; i--) {
+        for(int j = 0; j <= s; j++) {
+            int d = 0;
+            scanf("%d", &d);
+            if (d == 1) {
+                struct point temp;
+                temp.x = i;
+                temp.y = j;
+                map[t++] = temp;
+            }
         }
-    } else {
-        printf("%d", a[n/2]);
     }
-    printf(" %d\n", a[n-1]<a[0]?a[n-1]:a[0]);
->>>>>>> 0f70236ee6ace9cf95bc50426638a924de868400
+    int count = 0;
+    int mapTreeCount, anchorTreeCount;
+    for (int i = 0; i < n; i++) {
+        struct point anchor = trees[i];
+        mapTreeCount = 0;
+        anchorTreeCount = 0;
+        for (int i = 0; i < n; i++) {
+            struct point p = trees[i];
+            if (p.x-anchor.x <= s && p.y-anchor.y <= s && p.x >= anchor.x && p.y >= anchor.y) {
+                anchorTreeCount += 1;
+            }
+        }
+        for (int i = 0; i <= t; i++) {
+            int x = anchor.x+map[i].x;
+            int y = anchor.y+map[i].y;
+            
+            for (int j = 0; j < n; j++) {
+                struct point p2 = trees[j];
+                if (x == p2.x && y == p2.y) {
+                    mapTreeCount += 1;
+                    if (mapTreeCount == t && t == anchorTreeCount && anchor.x+s<=l && anchor.y+s<=l) {
+                        count += 1;
+                        break;
+                    }
+                }
+            }
+        }
+    }
+    
+    printf("%d\n", count);
+    return 0;
 }
 ```
